@@ -10,13 +10,8 @@ const PrecinctRepresentation = ({ currentState, precinct }) => {
       if (!currentState) return;
 
       try {
-        // Step 1: Fetch the file name
-        const response = await axios.get(`http://localhost:8080/api/data/${currentState}/Master_Data`);
-        const fileName = response.data; // File name or URL from the first response
-        console.log("File Name: ", fileName);
-
-        // Step 2: Fetch the actual file data
-        const fileResponse = await axios.get(fileName);
+        // Fetch the master GeoJSON directly from the Next.js API route
+        const fileResponse = await axios.get(`/api/data/${currentState}/Master_Data`);
         const data = fileResponse.data; // The actual GeoJSON data
         console.log("File Response: ", data);
 

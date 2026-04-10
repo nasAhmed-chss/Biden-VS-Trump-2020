@@ -56,7 +56,7 @@ function GetMSEnsembleData({ race, showRegionType }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/data/MS_Ensemble_Data")
+      .get("/api/data/MS_Ensemble_Data")
       .then((response) => {
         setData(response.data);
       })

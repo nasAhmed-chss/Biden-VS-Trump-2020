@@ -307,7 +307,7 @@ export default function Map({ setZoomToMississippi, setZoomToConnecticut, setRes
                     '&copy; <a href="https://www.maptiler.com/copyright/" target="_blank">MapTiler</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>',
             }).addTo(map);
 
-            axios.get('http://localhost:8080/api/data/state_borders')
+            axios.get('/api/data/state_borders')
                 .then((response) => {
                     const data = response.data;
                     L.geoJSON(data, {

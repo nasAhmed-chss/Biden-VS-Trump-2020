@@ -12,8 +12,8 @@ const CongressionalRepresentation = ({ currentState, childSetDistrictHighlighted
     }
 
     const endpoints = {
-      Connecticut: 'http://localhost:8080/api/data/CT_Representation',
-      Mississippi: 'http://localhost:8080/api/data/MS_Representation',
+      Connecticut: '/api/data/CT_Representation',
+      Mississippi: '/api/data/MS_Representation',
     };
 
     const endpoint = endpoints[currentState];

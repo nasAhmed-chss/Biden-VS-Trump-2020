@@ -9,7 +9,7 @@ const IncomeDataCT = () => {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/data/connecticut_income_data')
+    axios.get('/api/data/connecticut_income_data')
       .then((response) => {
         const dataRetrieved = response.data;
         setData(dataRetrieved.data);

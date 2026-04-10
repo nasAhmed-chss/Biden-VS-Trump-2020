@@ -9,7 +9,7 @@ const IncomeDataMS = () => {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/data/mississippi_income_data')
+    axios.get('/api/data/mississippi_income_data')
       .then((response) => {
         const dataRetrieved = response.data;
         setData(dataRetrieved.data);

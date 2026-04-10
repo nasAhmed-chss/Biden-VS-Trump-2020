@@ -6,7 +6,7 @@ const ConnecticutRaceVSIncomePlot = ({ size }) => {
   const chartRef = useRef(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/data/CT_RaceVSIncome')
+    axios.get('/api/data/CT_RaceVSIncome')
       .then((response) => {
         console.log(response.data);
         const data = response.data;

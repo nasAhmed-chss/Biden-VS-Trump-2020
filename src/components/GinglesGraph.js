@@ -30,13 +30,8 @@ const GinglesGraph = ({ populationType, locationType, currentState, setPrecinct 
     useEffect(() => {
         const fetchChartData = async () => {
             try {
-                // Fetch data from the API
-                const response = await axios.get(`http://localhost:8080/api/data/${currentState}/Master_Data`);
-
-                const fileName = response.data;
-                console.log("File Name: ", fileName);
-
-                const fileResponse = await axios.get(fileName);
+                // Fetch master GeoJSON directly from the Next.js API route
+                const fileResponse = await axios.get(`/api/data/${currentState}/Master_Data`);
                 console.log("File Response: ", fileResponse.data);
 
                 let responseData;

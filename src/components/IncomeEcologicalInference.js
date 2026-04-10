@@ -9,7 +9,7 @@ const IncomeEcologicalInference = ({ state, party, incomeType, region }) => {
     // Fetch the JSON data
     console.log("this is the region " + region)
     axios
-      .get('http://localhost:8080/api/data/IncomeEcologicalInferenceData')
+      .get('/api/data/IncomeEcologicalInferenceData')
       .then((response) => {
 
         const data = response.data[state];

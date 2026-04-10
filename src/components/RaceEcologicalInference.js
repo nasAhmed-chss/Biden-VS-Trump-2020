@@ -8,7 +8,7 @@ const RaceEcologicalInference = ({ state, party, populationType, region }) => {
     useEffect(() => {
         // Fetch the JSON data
         axios
-            .get('http://localhost:8080/api/data/RaceEcoInferenceData')
+            .get('/api/data/RaceEcoInferenceData')
             .then((response) => {
                 const data = response.data[state];
                 if (party == "Democrat") {

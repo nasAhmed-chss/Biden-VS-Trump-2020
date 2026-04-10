@@ -7,7 +7,7 @@ const RaceDistributionCT = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/data/connecticut_race_data')
+    axios.get('/api/data/connecticut_race_data')
       .then((response) => {
         const dataRetrieved = response.data;
         setData(dataRetrieved);
