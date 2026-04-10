@@ -1,0 +1,52 @@
+{
+    "districts": [
+        {
+            "district_number": 1,
+            "representative": "Trent Kelly",
+            "party": "Rep",
+            "racial_ethnic_group": "White",
+            "average_household_income": 55000,
+            "poverty_percentage": 15.0,
+            "urban_percentage": 60,
+            "suburban_percentage": 25,
+            "rural_percentage": 15,
+            "vote_margin_percentage": 65
+          },
+          {
+            "district_number": 2,
+            "representative": "Bennie Thomp.",
+            "party": "Dem",
+            "racial_ethnic_group": "Black",
+            "average_household_income": 40000,
+            "poverty_percentage": 25.0,
+            "urban_percentage": 50,
+            "suburban_percentage": 20,
+            "rural_percentage": 30,
+            "vote_margin_percentage": 70
+          },
+          {
+            "district_number": 3,
+            "representative": "Michael Guest",
+            "party": "Rep",
+            "racial_ethnic_group": "White",
+            "average_household_income": 52000,
+            "poverty_percentage": 18.0,
+            "urban_percentage": 55,
+            "suburban_percentage": 30,
+            "rural_percentage": 15,
+            "vote_margin_percentage": 60
+          },
+          {
+            "district_number": 4,
+            "representative": "Mike Ezell",
+            "party": "Rep",
+            "racial_ethnic_group": "White",
+            "average_household_income": 50000,
+            "poverty_percentage": 20.0,
+            "urban_percentage": 65,
+            "suburban_percentage": 20,
+            "rural_percentage": 15,
+            "vote_margin_percentage": 55
+          }
+    ]
+  }

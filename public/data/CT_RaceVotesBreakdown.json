@@ -1,0 +1,31 @@
+{
+    "state": "Connecticut",
+    "races": {
+      "Asian": {
+        "Democrat": 62,
+        "Republican": 34,
+        "Other": 4
+      },
+      "Black": {
+        "Democrat": 87,
+        "Republican": 12,
+        "Other": 1
+      },
+      "Hispanic": {
+        "Democrat": 58,
+        "Republican": 34,
+        "Other": 8
+      },
+      "White": {
+        "Democrat": 58,
+        "Republican": 41,
+        "Other": 1
+      },
+      "Other": {
+        "Democrat": 59,
+        "Republican": 39,
+        "Other": 2
+      }
+    }
+  }
+  

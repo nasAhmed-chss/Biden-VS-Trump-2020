@@ -1,0 +1,12 @@
+{
+  "Connecticut": {
+    "totalVotes": "2,973,320 votes cast in the latest election.",
+    "racialDistribution": "65% White, 15% Hispanic, 10% African American, 10% Other Races",
+    "medianIncome": "$90,213 median household income."
+  },
+  "Mississippi": {
+    "totalVotes": "2,528,400 cast in the latest election.",
+    "racialDistribution": "60% White, 37% African American, 3% Other Races",
+    "medianIncome": "$52,985 median household income."
+  }
+}

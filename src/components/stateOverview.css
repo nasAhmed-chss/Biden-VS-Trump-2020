@@ -1,0 +1,25 @@
+/* CSS: Define tab button default and hover styles */
+.tabButton {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: #2c2c2c;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tabButton:hover {
+    background-color: #ebe1e1;
+    transform: scale(1.1);
+}
+
+.selected {
+    background-color: #007bff;
+}

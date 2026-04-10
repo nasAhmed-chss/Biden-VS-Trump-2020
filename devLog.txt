@@ -1,0 +1,101 @@
+Files Created/Maintained By Programmer:
+
+All:
+- page.js
+- DisplayData.js
+- pom.xml
+
+
+Mahim:
+- LandingPage.js
+- header.js
+- Map.js
+- DisplayData.js
+- RaceAnalysis.js
+- PieChatDisplay.js
+- StateOverview.js
+- LandingPage.js
+- EcologicalAnalysis.js
+- BoxPlotDisplay.js
+- App.java
+- MongoDBConnection.java
+- BackendApplication.java
+- DataController.java
+- Mississippi.svg
+- Connecticut.svg
+- state_borders.json
+- LandingPage.css
+- StateOverview.css
+
+
+
+Naseer:
+- connecticut_county_borders.json
+- mississippi_county_borders.json
+- incomeDataCT.js
+- incomeDataMS.js
+- Map.js
+-MD_CD_boudnaries
+-CT_CD_boudnaries
+-CT-Precinct_boundaries
+-MD-Precinct_boundaries
+- GinglesGraph.js
+- PrecientAnalysis
+-CT_precinct_data
+-MS_precinct_data
+
+
+
+Taha:
+- voting_data.json
+- MississippiVotesChart.js
+- ConnecticutVotesChart.js
+- MississippiRacePieCharts Folder
+- ConnecticutRacePieCharts Folder
+- MississippiRaceVSIncomePlot.js
+- ConnecticutRaceVSIncomePlot.js
+- PieChartLegend.js
+- MS_DemocratEcologicalInference.js
+- MS_RepublicanEcologicalInference.js
+- CT_DemocratEcologicalInference.js
+- CT_RepublicanEcologicalInference.js
+
+
+
+Saqif:
+- Map.js
+- displayData.js
+- incomeDataMS.js
+- incomeDataCT.js
+- RaceDistributionMS.js
+- stateOverview.js
+- MississippiVotesChart.js
+- stateOverview_data.json
+- voting_data.json
+- mississippi_income_data.json
+- mississippi_race_data.json
+- mississippi_voting_data.json
+- page.js
+
+
+
+
+Data:
+state_borders.json: Contains the geographical boundaries of the states Mississippi and Connecticut.
+connecticut_county_borders.json: Defines the county borders within the state of Connecticut.
+mississippi_county_borders.json: Outlines the county borders within the state of Mississippi.
+connecticut_income_data.json: Provides income data at an aggregated level for Connecticut.
+connecticut_race_data.json: Contains racial demographic data for the state of Connecticut.
+connecticut_voting_data.json: Includes voting data, likely summarizing elections and voter turnout for Connecticut.
+CT_CD_boundaries.json: Congressional District (CD) boundaries within Connecticut.
+CT_incomeByBlock.geojson: Income information for Connecticut segmented by block-level geography.
+CT_precinctAndVotingData.geojson: Contains detailed voting data for Connecticut, along with precinct boundaries.
+CT_RaceVotesBreakdown.json: A breakdown of votes across different races within Connecticut.
+CT_RaceVSIncome.json: Data correlating race and income levels within Connecticut.
+MS_CD_boundaries.json: Mississippi's Congressional District boundaries.
+MS_incomeByBlock.geojson: Income data for Mississippi divided by blocks.
+MS_precinctAndVotingData.geojson: Provides voting and precinct-level data for Mississippi.
+MS_RaceVotesBreakdown.json: A breakdown of election results by race for Mississippi.
+MS_RaceVSIncome.json: Shows the relationship between race and income levels in Mississippi.
+mockData.json: Placeholder data used for testing or development purposes.
+voting_data.json: General election or voting data.

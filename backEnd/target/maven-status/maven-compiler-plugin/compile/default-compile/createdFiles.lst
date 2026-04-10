@@ -1,0 +1,7 @@
+projectbackend\App.class
+projectbackend\BackendApplication.class
+projectbackend\controllers\DataController.class
+main\java\projectbackend\config\MongoConfig.class
+projectbackend\db\MongoDBConnection.class
+projectbackend\config\CorsConfig$1.class
+projectbackend\config\CorsConfig.class

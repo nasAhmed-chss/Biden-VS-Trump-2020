@@ -1,0 +1,60 @@
+{
+  "name": "cse416_project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^5.6.4",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.3",
+    "@mui/material": "^6.1.1",
+    "axios": "^1.7.7",
+    "chart.js": "^4.4.7",
+    "chartjs-chart-box-and-violin-plot": "^4.0.0",
+    "cse416_project": "file:",
+    "d3": "^7.9.0",
+    "firebase": "^12.3.0",
+    "framer-motion": "^11.9.0",
+    "fs": "^0.0.1-security",
+    "leaflet": "^1.9.4",
+    "mathjs": "^13.2.0",
+    "mongodb": "^6.20.0",
+    "mui": "^0.0.1",
+    "mvn": "^3.5.0",
+    "next": "^14.2.20",
+    "openai": "^4.66.1",
+    "python": "^0.0.4",
+    "react": "^18",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18",
+    "react-leaflet": "^4.2.1",
+    "recharts": "^2.13.0",
+    "stripe": "^16.12.0",
+    "tailwind-scrollbar-hide": "^1.1.7"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.13",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  },
+  "description": "1. Install Prerequisites: JDK version 8 or higher, Maven, MongoDB\r 2. Run the mongoDB by putting entering this command: \"mongod\"\r     - the default port is (27017)\r 3. Create a collection on mongoDB called \"416_Project_Data\"\r 4. Run this command to populate the db: \"node populate_state_borders.js\"\r 5. cd into the \"backEnd\" folder and run the command to build the project: \"mvn clean install\"\r 6. Then start the server with the command: \"mvn spring-boot:run\"\r     - the default port it runs at is 8080\r 7. You can verify the server is running but going to http://localhost:8080/api/data/connect\r 8. You enter other URLs to verify correct data retrival (ex: http://localhost:8080/api/data/state-borders)\r 9. Once finished, use CTRL + C to close the server from the terminal",
+  "main": "populate_state_borders.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GitHubMahim/416-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GitHubMahim/416-Project/issues"
+  },
+  "homepage": "https://github.com/GitHubMahim/416-Project#readme"
+}

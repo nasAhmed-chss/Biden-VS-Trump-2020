@@ -1,0 +1,12 @@
+[
+    {
+        "state": "Mississippi",
+        "party": "Democrat",
+        "votes": 1234800
+    },
+    {
+        "state": "Mississippi",
+        "party": "Republican",
+        "votes": 1293600
+    }
+]

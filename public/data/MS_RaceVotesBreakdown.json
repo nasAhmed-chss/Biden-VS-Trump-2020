@@ -1,0 +1,32 @@
+{
+    "state": "Mississippi",
+    "races": {
+      "Asian": {
+        
+        "Democrat": 28,
+        "Republican": 60,
+        "Other": 12
+      },
+      "Black": {
+        "Democrat": 90,
+        "Republican": 9,
+        "Other": 1
+      },
+      "Hispanic": {
+        "Democrat": 66,
+        "Republican": 32,
+        "Other": 2
+      },
+      "White": {
+        "Democrat": 14,
+        "Republican": 85,
+        "Other": 1
+      },
+      "Other": {
+        "Democrat": 45,
+        "Republican": 52,
+        "Other": 3
+      }
+    }
+  }
+  

@@ -1,0 +1,110 @@
+/* src/styles/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%
+}
+
+
+
+/* ButtonStyles.css */
+
+.button-container {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  /* Adjust position from the top */
+  right: 20px;
+  /* Adjust position from the right */
+  z-index: 1000;
+  /* Ensure it appears above other elements */
+  gap: 10px;
+  /* Space between buttons */
+}
+
+.select {
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.summary-container {
+  display: flex;
+  justify-content: flex-start;
+  ;
+  margin: -20px 10px 10px 10px;
+  /* Decrease margin-top or use negative value to push it up */
+  font-size: 20px;
+  /* Optional padding for aesthetics */
+  width: 100%;
+
+
+}
+
+.left-column,
+.right-column {
+  flex: 1;
+  /* Allows both columns to take equal space */
+  padding-left: 0;
+  /* Ensure no extra padding on the left side */
+
+  /* Set a max width for the left column */
+  /* Optional padding for aesthetics */
+}
+
+.summary {
+  font-size: 20px;
+  /* Adjust font size as needed */
+  color: #333;
+  /* Optional color for text */
+
+}
+
+span {
+  font-size: 20px;
+  font-weight: bold;
+  /* Makes the text before the colon bold */
+}
+
+div {
+  margin: 0;
+  /* Remove default margin */
+  padding: 0;
+  /* Remove default padding */
+  /* Optional: Set height if needed */
+  /* height: auto; */
+  /* Let content dictate height */
+}
+
+.flushed-black-div {
+  position: relative;
+  /* height: calc(100vh - 60px); */
+  background-color: black;
+  color: white;
+  /* If you want the text inside to be visible on the black background */
+}
+
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: hidden;
+}

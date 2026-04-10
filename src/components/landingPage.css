@@ -1,0 +1,295 @@
+.container {
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+
+    height: 100vh;
+
+    flex-direction: row;
+    gap: 20%;
+    background: linear-gradient(to right, #ffffff, #f0f0f0);
+}
+
+
+.stateText {
+    font-size: 1.2rem;
+    /* Adjust title font size */
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.mississippiImage {
+    width: 200px;
+    height: auto;
+    fill: red;
+    filter: brightness(0) saturate(100%) invert(19%) sepia(87%) saturate(4027%) hue-rotate(331deg) brightness(96%) contrast(109%);
+}
+
+.connecticutImage {
+    width: 200px;
+    height: auto;
+    fill: blue;
+    filter: brightness(0) saturate(100%) invert(16%) sepia(94%) saturate(2917%) hue-rotate(210deg) brightness(96%) contrast(112%);
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.landingPageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #004d40, #001f1f);
+}
+
+.titleSection {
+    display: flex;
+    flex-direction: column;
+    /* Stack elements vertically */
+    align-items: center;
+    /* Center child elements horizontally */
+    text-align: center;
+    /* Ensure text alignment matches */
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.taskbar {
+    display: flex;
+    justify-content: space-between;
+    /* Space items across the taskbar */
+    align-items: center;
+    background-color: #002b2b;
+    /* Example background */
+    padding: 10px 20px;
+    border-radius: 20px;
+    /* Optional rounded corners */
+    width: 200%;
+    /* Taskbar takes full width */
+}
+
+.taskbar ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* Span the entire taskbar */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.taskbar li {
+    flex: 1;
+    /* Each item takes up 1/3 of the width */
+    text-align: center;
+    /* Center-align the text */
+    font-size: 1rem;
+    /* Adjust font size as needed */
+    color: white;
+    /* Text color */
+    cursor: pointer;
+}
+
+.taskbar li:hover {
+    background-color: #00695c;
+    /* Change background on hover */
+}
+
+.stateSection {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+    gap: 40px;
+    /* height: calc(100vh / 3); */
+    align-items: center;
+    /* Ensures titles and images are aligned on the same level */
+    /* Divide the viewport height evenly */
+}
+
+
+.stateContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 200px;
+    height: auto;
+    /* Set a consistent width for each state container */
+}
+
+.titleContainer {
+    display: flex;
+    /* Arrange titles horizontally */
+    justify-content: space-between;
+    /* Space titles equally */
+    align-items: center;
+    /* Align titles to the same vertical level */
+    gap: 50px;
+    /* Add space between titles */
+    margin-bottom: 10px;
+    /* Space between the titles and images */
+    width: 100%;
+    /* Ensure it spans the full section width */
+    text-align: center;
+    /* Center-align the text */
+}
+
+.stateImage {
+    width: 100%;
+    /* Increase the width */
+    max-width: 200px;
+    /* Limit the maximum size */
+    max-height: 250px;
+    /* Maintain the aspect ratio */
+    /* fill: #001f1f; */
+    /* Change to desired color (for SVGs) */
+    filter: brightness(0) saturate(100%) invert(25%) sepia(100%) saturate(500%) hue-rotate(180deg) brightness(70%) contrast(100%);
+    /* Optional filter to create custom colors */
+    transition: transform 0.3s ease, filter 0.3s ease;
+    height: auto;
+    /* Smooth transitions */
+}
+
+.stateContainer:hover .stateImage {
+    transform: scale(1.1);
+    /* Slight zoom effect on hover */
+    /* filter: brightness(0) saturate(100%) invert(80%) sepia(100%) saturate(3000%) hue-rotate(180deg) brightness(105%) contrast(110%); */
+    /* Change color on hover */
+}
+
+.analysisSection {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    background: linear-gradient(180deg, #004d40, #001f1f);
+}
+
+.analysisContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    box-sizing: border-box;
+}
+
+.graph {
+    width: 130%;
+    /* Ensures the graph takes full width of its container */
+    height: auto;
+    /* Maintains the aspect ratio */
+    background-color: #001f1f;
+    /* Placeholder background */
+    display: flex;
+    /* Ensures proper alignment */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Prevents content from overflowing */
+}
+
+.analysisContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    /* Adjusts the width to fit better */
+    max-width: 600px;
+    /* Optional: Limit the max width */
+    margin: 0 10px;
+    /* Add space between the graph and info */
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    /* Adjust width for text and button */
+    max-width: 400px;
+    /* Optional: Limit max width */
+    text-align: center;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    text-align: center;
+}
+
+.infoText {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.infoButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.infoButton:hover {
+    background-color: #0056b3;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    /* Prevent scrolling entirely */
+    height: auto;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+
+/* Main content container: Enable scrolling */
+.mainContent {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    /* Allow vertical scrolling here */
+    overflow-x: hidden;
+    /* Prevent horizontal scrolling */
+    scroll-behavior: smooth;
+    /* Smooth scrolling experience */
+    padding: 20px;
+    /* Optional padding */
+    box-sizing: border-box;
+    /* Ensure padding doesn’t affect dimensions */
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    /* Centers the image horizontally */
+    align-items: center;
+    width: 100%;
+    /* Matches container width */
+}

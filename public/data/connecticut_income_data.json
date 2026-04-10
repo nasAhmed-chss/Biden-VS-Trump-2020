@@ -1,0 +1,26 @@
+{
+    "title": "Household Income Distribution (%)",
+    "color": "#76C976",
+    "data": [
+        {
+            "incomeGroup": "<$25k",
+            "percentage": 12
+        },
+        {
+            "incomeGroup": "$25k-$50k",
+            "percentage": 18
+        },
+        {
+            "incomeGroup": "$50k-$75k",
+            "percentage": 25
+        },
+        {
+            "incomeGroup": "$75k-$100k",
+            "percentage": 15
+        },
+        {
+            "incomeGroup": ">$100k",
+            "percentage": 39
+        }
+    ]
+}
