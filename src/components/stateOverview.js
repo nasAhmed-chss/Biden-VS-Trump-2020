@@ -96,35 +96,35 @@ const StateOverview = ({ currentState, selectedSubCategory, childSetDistrictHigh
 
             {/* Chart Section */}
             {selectedSubCategory !== 'CD Representation' && (
-                <>
-                    {/* Top Row Charts */}
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        gap: '10px',
-                        marginTop: '20px',
-                        height: '35%',
-                    }}>
-                        <div style={chartContainerStyleVoting}>
-                            {currentState === 'Mississippi' ? <MississippiVotesChart /> : <ConnecticutVotesChart />}
-                        </div>
-                        <div style={chartContainerStyle}>
-                            {currentState === 'Mississippi' ? <IncomeDataMS /> : <IncomeDataCT />}
-                        </div>
+                <div style={{
+                    display: 'flex',
+                    gap: '12px',
+                    marginTop: '16px',
+                    width: '100%',
+                    height: 'calc(100vh - 300px)',
+                    minHeight: '500px',
+                }}>
+                    {/* Left column — Votes */}
+                    <div style={{ ...chartContainerStyleVoting, flex: '0 0 30%' }}>
+                        {currentState === 'Mississippi' ? <MississippiVotesChart /> : <ConnecticutVotesChart />}
                     </div>
 
-                    {/* Bottom Row Chart */}
+                    {/* Right column — Income stacked above Race */}
                     <div style={{
                         display: 'flex',
-                        justifyContent: 'space-between',
-                        marginTop: '5px',
-                        height: "35%"
+                        flexDirection: 'column',
+                        gap: '12px',
+                        flex: '1',
+                        minHeight: 0,
                     }}>
-                        <div style={chartContainerStyleRace}>
+                        <div style={{ ...chartContainerStyle, flex: '1', minHeight: 0 }}>
+                            {currentState === 'Mississippi' ? <IncomeDataMS /> : <IncomeDataCT />}
+                        </div>
+                        <div style={{ ...chartContainerStyleRace, flex: '1.4', minHeight: 0 }}>
                             {currentState === 'Mississippi' ? <RaceDistributionMS /> : <RaceDistributionCT />}
                         </div>
                     </div>
-                </>
+                </div>
             )}
 
             {selectedSubCategory === 'CD Representation' && (
@@ -140,97 +140,101 @@ const StateOverview = ({ currentState, selectedSubCategory, childSetDistrictHigh
 const summaryContainerStyle = {
     display: 'flex',
     flexDirection: 'column',
-    border: '1px solid rgba(0, 0, 0, 0.2)',
-    fontFamily: '"Arial", sans-serif',
-    borderRadius: '6px',
-    fontSize: '14px',
-    lineHeight: '1.4',
-    color: '#333',
-    width: '99.5%',
-    backgroundColor: '#f8f8f8',
+    border: '1px solid rgba(255,255,255,0.1)',
+    fontFamily: 'Inter, Arial, sans-serif',
+    borderRadius: '14px',
+    fontSize: '13px',
+    lineHeight: '1.5',
+    color: 'rgba(255,255,255,0.85)',
+    width: '100%',
+    background: 'rgba(0,0,0,0.25)',
+    overflow: 'hidden',
+    boxSizing: 'border-box',
 };
 
 const titleStyle = {
     textAlign: 'center',
-    marginBottom: '10px',
-    fontWeight: 'bold',
-    fontSize: '18px',
-    color: '#222',
-};
-
-const horizontalContainerStyle = {
-    display: 'flex',
-    //flexWrap: 'wrap',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    gap: '5px',
+    margin: '14px 0 10px',
+    fontWeight: '700',
+    fontSize: '15px',
+    color: '#80cbc4',
+    letterSpacing: '0.04em',
+    textTransform: 'uppercase',
 };
 
 const rowContainerStyle = {
     display: 'flex',
     flexWrap: 'nowrap',
-    justifyContent: 'space-between',
-    gap: '5px',
-    overflowX: 'auto', // Allow horizontal scrolling if needed
+    justifyContent: 'stretch',
+    gap: '0px',
+    overflowX: 'auto',
+    borderTop: '1px solid rgba(255,255,255,0.08)',
 };
 
 const sectionStyle = {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', // Center the title horizontally
-    backgroundColor: '#ffffff',
-    borderRadius: '4px',
-    padding: '8px 10px', // Reduce top and bottom padding
-    boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
-    minWidth: '150px',
-    maxWidth: '200px',
-    flexGrow: 1,
+    alignItems: 'center',
+    padding: '10px 12px',
+    borderRight: '1px solid rgba(255,255,255,0.07)',
+    flex: 1,
+    minWidth: '120px',
 };
 
 const sectionTitleStyle = {
-    fontWeight: 'bold',
-    marginBottom: '5px',
-    fontSize: '14px', // Adjust font size if needed
-    textAlign: 'center', // Center align the text
-    marginTop: '0px', // Remove extra space at the top
-    paddingTop: '5px', // Add minimal padding for better spacing
-    color: '#444',
+    fontWeight: '700',
+    marginBottom: '6px',
+    fontSize: '11px',
+    textAlign: 'center',
+    marginTop: '0px',
+    color: '#80cbc4',
+    letterSpacing: '0.07em',
+    textTransform: 'uppercase',
 };
 
 const itemStyle = {
-    margin: '2px 0', // Reduce spacing between items
-    fontSize: '14px', // Slightly smaller font size
-    lineHeight: '1.2', // Reduce line spacing
+    margin: '2px 0',
+    fontSize: '12px',
+    lineHeight: '1.4',
+    color: 'rgba(255,255,255,0.7)',
+    textAlign: 'center',
+};
+
+const chartCardStyle = {
+    background: 'rgba(0,0,0,0.2)',
+    borderRadius: '12px',
+    border: '1px solid rgba(255,255,255,0.07)',
+    overflow: 'hidden',
 };
 
 const chartContainerStyle = {
+    ...chartCardStyle,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', // Center individual charts horizontally
+    alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: '100%'
-
+    height: '100%',
 };
 
 const chartContainerStyleVoting = {
+    ...chartCardStyle,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', // Center individual charts horizontally
+    alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: '100%'
-
+    height: '100%',
 };
 
 const chartContainerStyleRace = {
+    ...chartCardStyle,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', // Center individual charts horizontally
+    alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: '100%'
-
+    height: '100%',
 };
 
 export default StateOverview;

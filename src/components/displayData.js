@@ -28,14 +28,17 @@ function DisplayData({ currentState, selectedTab, selectedCategory, setSelectedC
 const containerStyle = {
     position: 'relative',
     width: '55%',
-    color: 'black',
-    backgroundColor: '#F9F9F9',
+    color: 'white',
+    background: 'linear-gradient(160deg, #011e1e 0%, #022a2a 100%)',
     padding: '20px',
     boxSizing: 'border-box',
-    overflow: 'auto',
+    overflowY: 'auto',
+    overflowX: 'hidden',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    alignItems: 'stretch',
+    borderLeft: '1px solid rgba(255,255,255,0.07)',
+    height: '100%',
 };
 
 const tabsContainerStyle = {

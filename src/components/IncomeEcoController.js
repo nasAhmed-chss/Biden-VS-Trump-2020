@@ -16,7 +16,7 @@ const Controller = ({
 
         <div style={controllerSectionStyle}>
 
-            <h4 style={sectionHeaderStyle}>Graph {graphNumber}</h4>
+            <h4 style={{ ...sectionHeaderStyle, color: '#80cbc4' }}>Graph {graphNumber}</h4>
             <label style={dropdownLabelStyle}>Candidate</label>
             <select
                 style={dropdownStyle}
@@ -83,37 +83,49 @@ const Controller = ({
 
 const controllerSectionStyle = {
     width: '100%',
-    marginBottom: '20px',
-    padding: '10px',
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    backgroundColor: '#ffffff',
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-    marginTop: '20px',
+    padding: '12px',
+    border: '1px solid rgba(255,255,255,0.1)',
+    borderRadius: '10px',
+    background: 'rgba(0,0,0,0.25)',
+    boxSizing: 'border-box',
 };
 
 const sectionHeaderStyle = {
-    fontSize: '1rem',
-    fontFamily: '"Arial", sans-serif',
+    fontSize: '11px',
+    fontFamily: 'Inter, Arial, sans-serif',
+    fontWeight: '700',
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
+    color: 'rgba(255,255,255,0.4)',
     marginBottom: '10px',
     textAlign: 'center',
 };
 
 const dropdownLabelStyle = {
-    fontSize: '0.9rem',
-    fontFamily: '"Arial", sans-serif',
-    marginBottom: '5px',
+    fontSize: '11px',
+    fontFamily: 'Inter, Arial, sans-serif',
+    fontWeight: '600',
+    color: 'rgba(255,255,255,0.5)',
+    marginBottom: '4px',
     display: 'block',
+    letterSpacing: '0.05em',
+    textTransform: 'uppercase',
 };
 
 const dropdownStyle = {
     width: '100%',
-    padding: '8px',
-    fontSize: '0.9rem',
-    fontFamily: '"Arial", sans-serif',
+    padding: '7px 10px',
+    fontSize: '12px',
+    fontFamily: 'Inter, Arial, sans-serif',
+    fontWeight: '500',
     marginBottom: '10px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
+    borderRadius: '7px',
+    border: '1px solid rgba(255,255,255,0.15)',
+    background: '#036060',
+    color: 'white',
+    outline: 'none',
+    cursor: 'pointer',
+    boxSizing: 'border-box',
 };
 
 export default Controller;

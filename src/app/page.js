@@ -62,7 +62,7 @@ export default function Home() {
         />
       </Head>
 
-      <div id="LandingPageDiv" style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+      <div id="LandingPageDiv" style={{ display: 'flex', flexDirection: 'column', width: '100%', minHeight: '100vh', background: '#011c1c' }}>
         {showMap && (
           <Header
             handleZoomToMississippi={handleZoomToMississippi}
@@ -70,6 +70,8 @@ export default function Home() {
             resetView={resetView}
             setShowMap={setShowMap}
             showMap={showMap}
+            currentState={currentState}
+            isZoomed={isZoomed}
           />
         )}
 
@@ -79,9 +81,8 @@ export default function Home() {
             display: 'flex',
             flexDirection: 'row',
             width: '100%',
-            height: '100%',
-            marginLeft: 'auto',
-            marginBottom: '5px',
+            height: 'calc(100vh - 82px)',
+            background: '#011c1c',
             overflow: 'hidden',
           }}
         >
@@ -91,8 +92,9 @@ export default function Home() {
               style={{
                 display: 'flex',
                 flexDirection: 'row',
-                width: '15%',
-                marginLeft: 'auto',
+                width: '200px',
+                minWidth: '180px',
+                flexShrink: 0,
               }}
             >
               <NavBar

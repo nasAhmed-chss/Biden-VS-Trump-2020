@@ -106,12 +106,18 @@ const RaceEcologicalInference = ({ state, party, populationType, region }) => {
         });
 
         // Add axes
-        svg
+        const xAxisGroup = svg
             .append('g')
             .attr('transform', `translate(0,${height})`)
             .call(d3.axisBottom(xScale).ticks(10));
+        xAxisGroup.selectAll('text').style('fill', 'rgba(255,255,255,0.7)');
+        xAxisGroup.selectAll('line').style('stroke', 'rgba(255,255,255,0.7)');
+        xAxisGroup.select('.domain').style('stroke', 'rgba(255,255,255,0.7)');
 
-        svg.append('g').call(d3.axisLeft(yScale).ticks(10));
+        const yAxisGroup = svg.append('g').call(d3.axisLeft(yScale).ticks(10));
+        yAxisGroup.selectAll('text').style('fill', 'rgba(255,255,255,0.7)');
+        yAxisGroup.selectAll('line').style('stroke', 'rgba(255,255,255,0.7)');
+        yAxisGroup.select('.domain').style('stroke', 'rgba(255,255,255,0.7)');
 
         // Add title
         svg
@@ -121,21 +127,23 @@ const RaceEcologicalInference = ({ state, party, populationType, region }) => {
             .attr('text-anchor', 'middle')
             .attr('font-size', '16px')
             .attr('font-weight', 'bold')
-            .style("font-family", "Arial, sans-serif")
+            .style("font-family", "Inter, Arial, sans-serif")
+            .style('fill', 'rgba(255,255,255,0.85)')
             .text(party === 'Democrat' ? 'Support for Biden by Income Group' : 'Support for Trump by Income Group');
 
         // Add grid lines for the Y-axis
-        svg.append('g')
+        const yGridGroup = svg.append('g')
             .attr('class', 'grid')
             .call(
                 d3.axisLeft(yScale)
                     .tickSize(-width) // Extend the grid lines across the chart
                     .tickFormat('') // Remove tick labels
             )
-            .attr('stroke-opacity', 0.1); // Adjust grid line opacity
+            .attr('stroke-opacity', 0.28); // Adjust grid line opacity
+        yGridGroup.selectAll('line').style('stroke', 'rgba(255,255,255,0.28)');
 
         // Add grid lines for the X-axis
-        svg.append('g')
+        const xGridGroup = svg.append('g')
             .attr('class', 'grid')
             .attr('transform', `translate(0, ${height})`)
             .call(
@@ -143,7 +151,8 @@ const RaceEcologicalInference = ({ state, party, populationType, region }) => {
                     .tickSize(-height)
                     .tickFormat('')
             )
-            .attr('stroke-opacity', 0.1);
+            .attr('stroke-opacity', 0.28);
+        xGridGroup.selectAll('line').style('stroke', 'rgba(255,255,255,0.28)');
 
         // Add X-axis title
         svg.append('text')
@@ -151,7 +160,8 @@ const RaceEcologicalInference = ({ state, party, populationType, region }) => {
             .attr('y', height + margin.bottom - 10)
             .attr('text-anchor', 'middle')
             .attr('font-size', '14px')
-            .style("font-family", "Arial, sans-serif")
+            .style("font-family", "Inter, Arial, sans-serif")
+            .style('fill', 'rgba(255,255,255,0.85)')
             .text('Support Fraction');
 
         // Add Y-axis title
@@ -161,7 +171,8 @@ const RaceEcologicalInference = ({ state, party, populationType, region }) => {
             .attr('text-anchor', 'middle')
             .attr('font-size', '14px')
             .attr('transform', 'rotate(-90)')
-            .style("font-family", "Arial, sans-serif")
+            .style("font-family", "Inter, Arial, sans-serif")
+            .style('fill', 'rgba(255,255,255,0.85)')
             .text('Density');
 
         // Add legend
@@ -186,7 +197,8 @@ const RaceEcologicalInference = ({ state, party, populationType, region }) => {
             .attr('y', 9)
             .attr('dy', '.35em')
             .style('text-anchor', 'end')
-            .style("font-family", "Arial, sans-serif")
+            .style("font-family", "Inter, Arial, sans-serif")
+            .style('fill', 'rgba(255,255,255,0.85)')
             .text((d) => (d === "Hispanic" ? "Hisp." : d)); // Conditional check
 
     };

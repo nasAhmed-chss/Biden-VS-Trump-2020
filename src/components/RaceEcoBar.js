@@ -57,7 +57,8 @@ const RaceEcoBar = ({ state }) => {
                     .tickSize(-width) // Extend the grid lines across the chart
                     .tickFormat('') // Remove tick labels
             )
-            .attr('stroke-opacity', 0.1); // Adjust grid line opacity
+            .attr('stroke-opacity', 0.28) // Adjust grid line opacity
+            .selectAll('line').style('stroke', 'rgba(255,255,255,0.28)');
 
         // Add grid lines for the X-axis
         svg.append('g')
@@ -68,16 +69,21 @@ const RaceEcoBar = ({ state }) => {
                     .tickSize(-height)
                     .tickFormat('')
             )
-            .attr('stroke-opacity', 0.1);
+            .attr('stroke-opacity', 0.28)
+            .selectAll('line').style('stroke', 'rgba(255,255,255,0.28)');
 
         // Add X-axis
-        svg.append('g')
+        const axisColor = 'rgba(255,255,255,0.7)';
+        const xAxisG = svg.append('g')
             .attr('transform', `translate(0, ${height})`)
-            .call(d3.axisBottom(x))
-            .selectAll('text')
+            .call(d3.axisBottom(x));
+        xAxisG.selectAll('text')
             .attr('transform', 'rotate(-20)')
             .style('font-size', '16px')
-            .style('text-anchor', 'end');
+            .style('text-anchor', 'end')
+            .style('fill', axisColor);
+        xAxisG.selectAll('line').style('stroke', axisColor);
+        xAxisG.select('.domain').style('stroke', axisColor);
 
         // Add X-axis label
         svg.append('text')
@@ -86,10 +92,14 @@ const RaceEcoBar = ({ state }) => {
             .attr('text-anchor', 'middle')
             .style('font-size', '20px')
             .style('font-weight', 'bold')
+            .style('fill', 'rgba(255,255,255,0.85)')
             .text('Race');
 
         // Add Y-axis
-        svg.append('g').call(d3.axisLeft(y));
+        const yAxisG = svg.append('g').call(d3.axisLeft(y).ticks(5).tickFormat(d => `${d}%`));
+        yAxisG.selectAll('text').style('font-size', '12px').style('fill', axisColor);
+        yAxisG.selectAll('line').style('stroke', axisColor);
+        yAxisG.select('.domain').style('stroke', axisColor);
 
         // Add Y-axis label
         svg.append('text')
@@ -99,6 +109,7 @@ const RaceEcoBar = ({ state }) => {
             .attr('text-anchor', 'middle')
             .style('font-size', '20px')
             .style('font-weight', 'bold')
+            .style('fill', 'rgba(255,255,255,0.85)')
             .text('Support Percentage');
         // Add bars for Trump
         svg.selectAll('.bar-trump')
@@ -131,7 +142,7 @@ const RaceEcoBar = ({ state }) => {
             .attr('x2', (d) => x(d.race) + x.bandwidth() / 4)
             .attr('y1', (d) => y(d.Trump - d.error))
             .attr('y2', (d) => y(d.Trump + d.error))
-            .attr('stroke', 'black')
+            .attr('stroke', 'rgba(255,255,255,0.7)')
             .attr('stroke-width', 2);
 
         // Add T-caps (Trump)
@@ -143,7 +154,7 @@ const RaceEcoBar = ({ state }) => {
             .attr('x2', (d) => x(d.race) + x.bandwidth() / 4 + 5)
             .attr('y1', (d) => y(d.Trump - d.error))
             .attr('y2', (d) => y(d.Trump - d.error))
-            .attr('stroke', 'black')
+            .attr('stroke', 'rgba(255,255,255,0.7)')
             .attr('stroke-width', 2);
 
         svg.selectAll('.error-cap-trump-top')
@@ -154,7 +165,7 @@ const RaceEcoBar = ({ state }) => {
             .attr('x2', (d) => x(d.race) + x.bandwidth() / 4 + 5)
             .attr('y1', (d) => y(d.Trump + d.error))
             .attr('y2', (d) => y(d.Trump + d.error))
-            .attr('stroke', 'black')
+            .attr('stroke', 'rgba(255,255,255,0.7)')
             .attr('stroke-width', 2);
 
         // Add error bars (Biden)
@@ -166,7 +177,7 @@ const RaceEcoBar = ({ state }) => {
             .attr('x2', (d) => x(d.race) + (3 * x.bandwidth()) / 4)
             .attr('y1', (d) => y(d.Biden - d.error))
             .attr('y2', (d) => y(d.Biden + d.error))
-            .attr('stroke', 'black')
+            .attr('stroke', 'rgba(255,255,255,0.7)')
             .attr('stroke-width', 2);
 
         // Add T-caps (Biden)
@@ -178,7 +189,7 @@ const RaceEcoBar = ({ state }) => {
             .attr('x2', (d) => x(d.race) + (3 * x.bandwidth()) / 4 + 5)
             .attr('y1', (d) => y(d.Biden - d.error))
             .attr('y2', (d) => y(d.Biden - d.error))
-            .attr('stroke', 'black')
+            .attr('stroke', 'rgba(255,255,255,0.7)')
             .attr('stroke-width', 2);
 
         svg.selectAll('.error-cap-biden-top')
@@ -189,7 +200,7 @@ const RaceEcoBar = ({ state }) => {
             .attr('x2', (d) => x(d.race) + (3 * x.bandwidth()) / 4 + 5)
             .attr('y1', (d) => y(d.Biden + d.error))
             .attr('y2', (d) => y(d.Biden + d.error))
-            .attr('stroke', 'black')
+            .attr('stroke', 'rgba(255,255,255,0.7)')
             .attr('stroke-width', 2);
 
         // Add chart title
@@ -199,6 +210,7 @@ const RaceEcoBar = ({ state }) => {
             .attr('text-anchor', 'middle')
             .style('font-size', '20px')
             .style('font-weight', 'bold')
+            .style('fill', 'rgba(255,255,255,0.9)')
             .text('Support for Candidates by Race');
 
         const legend = svg.append('g').attr('transform', `translate(${width - 35}, ${0})`);
@@ -216,6 +228,7 @@ const RaceEcoBar = ({ state }) => {
             .attr('x', 20)
             .attr('y', 12)
             .style('font-size', '16px')
+            .style('fill', 'rgba(255,255,255,0.8)')
             .text('Trump');
 
         legend
@@ -231,6 +244,7 @@ const RaceEcoBar = ({ state }) => {
             .attr('x', 20)
             .attr('y', 32)
             .style('font-size', '16px')
+            .style('fill', 'rgba(255,255,255,0.8)')
             .text('Biden');
 
 

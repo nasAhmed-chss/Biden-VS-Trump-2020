@@ -47,16 +47,27 @@ const RegionEcoBar = ({ state }) => {
             .range([height, 0]);
 
         // Add X-axis
-        svg.append('g')
+        const xAxisGroup = svg.append('g')
             .attr('transform', `translate(0, ${height})`)
-            .call(d3.axisBottom(x))
-            .selectAll('text')
+            .call(d3.axisBottom(x));
+        xAxisGroup.selectAll('text')
+            .style('fill', 'rgba(255,255,255,0.7)')
             .style('font-size', '14px')
             .style('text-anchor', 'middle');
+        xAxisGroup.selectAll('line')
+            .style('stroke', 'rgba(255,255,255,0.7)');
+        xAxisGroup.select('.domain')
+            .style('stroke', 'rgba(255,255,255,0.7)');
 
         // Add Y-axis
-        svg.append('g')
+        const yAxisGroup = svg.append('g')
             .call(d3.axisLeft(y).ticks(5).tickFormat(d3.format('.0%')));
+        yAxisGroup.selectAll('text')
+            .style('fill', 'rgba(255,255,255,0.7)');
+        yAxisGroup.selectAll('line')
+            .style('stroke', 'rgba(255,255,255,0.7)');
+        yAxisGroup.select('.domain')
+            .style('stroke', 'rgba(255,255,255,0.7)');
 
         // Add X-axis label
         svg.append('text')
@@ -65,6 +76,8 @@ const RegionEcoBar = ({ state }) => {
             .attr('text-anchor', 'middle')
             .style('font-size', '20px')
             .style('font-weight', 'bold')
+            .style('fill', 'rgba(255,255,255,0.85)')
+            .style('font-family', 'Inter, Arial, sans-serif')
             .text('Region Type');
 
         // Add Y-axis label
@@ -75,18 +88,22 @@ const RegionEcoBar = ({ state }) => {
             .attr('text-anchor', 'middle')
             .style('font-size', '20px')
             .style('font-weight', 'bold')
+            .style('fill', 'rgba(255,255,255,0.85)')
+            .style('font-family', 'Inter, Arial, sans-serif')
             .text('Support Percentage');
-        svg.append('g')
+        const yGridGroup = svg.append('g')
             .attr('class', 'grid')
             .call(
                 d3.axisLeft(y)
                     .tickSize(-width) // Extend the grid lines across the chart
                     .tickFormat('') // Remove tick labels
             )
-            .attr('stroke-opacity', 0.1); // Adjust grid line opacity
+            .attr('stroke-opacity', 0.28); // Adjust grid line opacity
+        yGridGroup.selectAll('line')
+            .style('stroke', 'rgba(255,255,255,0.28)');
 
         // Add grid lines for the X-axis
-        svg.append('g')
+        const xGridGroup = svg.append('g')
             .attr('class', 'grid')
             .attr('transform', `translate(0, ${height})`)
             .call(
@@ -94,7 +111,9 @@ const RegionEcoBar = ({ state }) => {
                     .tickSize(-height)
                     .tickFormat('')
             )
-            .attr('stroke-opacity', 0.1);
+            .attr('stroke-opacity', 0.28);
+        xGridGroup.selectAll('line')
+            .style('stroke', 'rgba(255,255,255,0.28)');
 
         // Add Biden bars (blue)
         svg.selectAll('.bar-biden')
@@ -128,7 +147,7 @@ const RegionEcoBar = ({ state }) => {
                 .attr('x2', (d) => x(d.region) + offsetFactor * x.bandwidth())
                 .attr('y1', (d) => y(d[key] - d[errorKey]))
                 .attr('y2', (d) => y(d[key] + d[errorKey]))
-                .attr('stroke', 'black')
+                .attr('stroke', 'rgba(255,255,255,0.7)')
                 .attr('stroke-width', 2);
 
             svg.selectAll(`.error-cap-${key}-top`)
@@ -139,7 +158,7 @@ const RegionEcoBar = ({ state }) => {
                 .attr('x2', (d) => x(d.region) + offsetFactor * x.bandwidth() + 5)
                 .attr('y1', (d) => y(d[key] + d[errorKey]))
                 .attr('y2', (d) => y(d[key] + d[errorKey]))
-                .attr('stroke', 'black')
+                .attr('stroke', 'rgba(255,255,255,0.7)')
                 .attr('stroke-width', 2);
         };
 
@@ -153,6 +172,8 @@ const RegionEcoBar = ({ state }) => {
             .attr('text-anchor', 'middle')
             .style('font-size', '20px')
             .style('font-weight', 'bold')
+            .style('fill', 'rgba(255,255,255,0.85)')
+            .style('font-family', 'Inter, Arial, sans-serif')
             .text(`Support for Candidates by Region Type`);
         const legend = svg.append('g').attr('transform', `translate(${width - 35}, ${0})`);
 
@@ -169,6 +190,7 @@ const RegionEcoBar = ({ state }) => {
             .attr('x', 20)
             .attr('y', 12)
             .style('font-size', '16px')
+            .style('fill', 'rgba(255,255,255,0.8)')
             .text('Trump');
 
         legend
@@ -184,6 +206,7 @@ const RegionEcoBar = ({ state }) => {
             .attr('x', 20)
             .attr('y', 32)
             .style('font-size', '16px')
+            .style('fill', 'rgba(255,255,255,0.8)')
             .text('Biden');
 
 

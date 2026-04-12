@@ -54,7 +54,8 @@ const IncomeEcoBar = ({ state }) => {
                     .tickSize(-width) // Extend the grid lines across the chart
                     .tickFormat('') // Remove tick labels
             )
-            .attr('stroke-opacity', 0.1); // Adjust grid line opacity
+            .attr('stroke-opacity', 0.28) // Adjust grid line opacity
+            .selectAll('line').style('stroke', 'rgba(255,255,255,0.28)');
 
         // Add grid lines for the X-axis
         svg.append('g')
@@ -65,19 +66,23 @@ const IncomeEcoBar = ({ state }) => {
                     .tickSize(-height)
                     .tickFormat('')
             )
-            .attr('stroke-opacity', 0.1);
+            .attr('stroke-opacity', 0.28)
+            .selectAll('line').style('stroke', 'rgba(255,255,255,0.28)');
 
+        const axisColor = 'rgba(255,255,255,0.7)';
         // Add X-axis
-        svg.append('g')
+        const xAxisG = svg.append('g')
             .attr('transform', `translate(0, ${height})`)
-            .call(d3.axisBottom(x))
-            .selectAll('text')
-            .style('font-size', '14px')
-            .style('text-anchor', 'middle');
+            .call(d3.axisBottom(x));
+        xAxisG.selectAll('text').style('font-size', '13px').style('fill', axisColor);
+        xAxisG.selectAll('line').style('stroke', axisColor);
+        xAxisG.select('.domain').style('stroke', axisColor);
 
         // Add Y-axis
-        svg.append('g')
-            .call(d3.axisLeft(y).ticks(5).tickFormat(d3.format('.0%')));
+        const yAxisG = svg.append('g').call(d3.axisLeft(y).ticks(5).tickFormat(d3.format('.0%')));
+        yAxisG.selectAll('text').style('font-size', '12px').style('fill', axisColor);
+        yAxisG.selectAll('line').style('stroke', axisColor);
+        yAxisG.select('.domain').style('stroke', axisColor);
 
         // Add X-axis label
         svg.append('text')
@@ -87,6 +92,8 @@ const IncomeEcoBar = ({ state }) => {
             .style('font-size', '20px')
             .style('font-weight', 'bold')
             .style("font-family", "Arial, sans-serif")
+            .style('fill', 'rgba(255,255,255,0.85)')
+            .style('font-family', 'Inter, Arial, sans-serif')
             .text('Income Group');
 
         // Add Y-axis label
@@ -98,6 +105,8 @@ const IncomeEcoBar = ({ state }) => {
             .style('font-size', '20px')
             .style('font-weight', 'bold')
             .style("font-family", "Arial, sans-serif")
+            .style('fill', 'rgba(255,255,255,0.85)')
+            .style('font-family', 'Inter, Arial, sans-serif')
             .text('Support Percentage');
 
         // Add Biden bars (blue)
@@ -133,7 +142,7 @@ const IncomeEcoBar = ({ state }) => {
                 .attr('x2', (d) => x(d.income) + offsetFactor * x.bandwidth())
                 .attr('y1', (d) => y(d[key] - d[errorKey]))
                 .attr('y2', (d) => y(d[key] + d[errorKey]))
-                .attr('stroke', 'black')
+                .attr('stroke', 'rgba(255,255,255,0.7)')
                 .attr('stroke-width', 2);
 
             // T-caps (bottom)
@@ -145,7 +154,7 @@ const IncomeEcoBar = ({ state }) => {
                 .attr('x2', (d) => x(d.income) + offsetFactor * x.bandwidth() + 5)
                 .attr('y1', (d) => y(d[key] - d[errorKey]))
                 .attr('y2', (d) => y(d[key] - d[errorKey]))
-                .attr('stroke', 'black')
+                .attr('stroke', 'rgba(255,255,255,0.7)')
                 .attr('stroke-width', 2);
 
             // T-caps (top)
@@ -157,7 +166,7 @@ const IncomeEcoBar = ({ state }) => {
                 .attr('x2', (d) => x(d.income) + offsetFactor * x.bandwidth() + 5)
                 .attr('y1', (d) => y(d[key] + d[errorKey]))
                 .attr('y2', (d) => y(d[key] + d[errorKey]))
-                .attr('stroke', 'black')
+                .attr('stroke', 'rgba(255,255,255,0.7)')
                 .attr('stroke-width', 2);
         };
 
@@ -172,6 +181,8 @@ const IncomeEcoBar = ({ state }) => {
             .style('font-size', '20px')
             .style('font-weight', 'bold')
             .style("font-family", "Arial, sans-serif")
+            .style('fill', 'rgba(255,255,255,0.9)')
+            .style('font-family', 'Inter, Arial, sans-serif')
             .text(`Support for Biden and Trump by Income Group`);
 
         const legend = svg.append('g').attr('transform', `translate(${width - 50}, ${0})`);
@@ -190,6 +201,7 @@ const IncomeEcoBar = ({ state }) => {
             .attr('y', 12)
             .style('font-size', '16px')
             .style("font-family", "Arial, sans-serif")
+            .style('fill', 'rgba(255,255,255,0.8)')
             .text('Trump');
 
         legend
@@ -206,6 +218,7 @@ const IncomeEcoBar = ({ state }) => {
             .attr('y', 32)
             .style('font-size', '16px')
             .style("font-family", "Arial, sans-serif")
+            .style('fill', 'rgba(255,255,255,0.8)')
             .text('Biden');
     }, [state]);
 

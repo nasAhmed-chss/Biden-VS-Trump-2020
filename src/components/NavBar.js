@@ -92,10 +92,15 @@ function NavBar({ handleZoomToMississippi, handleZoomToConnecticut, handleResetV
 
     return (
         <div style={navBarContainerStyle}>
+            {/* Sidebar Title */}
+            <div style={{ paddingBottom: '10px', borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '4px' }}>
+                <p style={{ margin: 0, fontSize: '12px', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>Controls</p>
+            </div>
+
             {/* State Selection Dropdown */}
-            <div>
+            <div style={dropdownWrapperStyle}>
                 <label htmlFor="stateSelect" style={labelStyle}>
-                    Select State:
+                    Select State
                 </label>
                 <select
                     id="stateSelect"
@@ -104,7 +109,7 @@ function NavBar({ handleZoomToMississippi, handleZoomToConnecticut, handleResetV
                     onChange={(e) => handleStateSelection(e.target.value)}
                 >
                     <option value="" disabled>
-                        -- Select a State --
+                        — Select a State —
                     </option>
                     {states.map((state, index) => (
                         <option key={index} value={state}>
@@ -116,9 +121,9 @@ function NavBar({ handleZoomToMississippi, handleZoomToConnecticut, handleResetV
 
             {/* Category Selection Dropdown */}
             {phase === 'categorySelection' && (
-                <div>
+                <div style={dropdownWrapperStyle}>
                     <label htmlFor="categorySelect" style={labelStyle}>
-                        Select Category:
+                        Select Category
                     </label>
                     <select
                         id="categorySelect"
@@ -127,7 +132,7 @@ function NavBar({ handleZoomToMississippi, handleZoomToConnecticut, handleResetV
                         onChange={(e) => handleCategorySelection(e.target.value)}
                     >
                         <option value="" disabled>
-                            -- Select a Category --
+                            — Select a Category —
                         </option>
                         {categories.map((category, index) => (
                             <option key={index} value={category}>
@@ -140,9 +145,9 @@ function NavBar({ handleZoomToMississippi, handleZoomToConnecticut, handleResetV
 
             {/* Subcategory Selection Dropdown */}
             {selectedCategory && (
-                <div>
+                <div style={dropdownWrapperStyle}>
                     <label htmlFor="subCategorySelect" style={labelStyle}>
-                        Select Subcategory:
+                        Select Subcategory
                     </label>
                     <select
                         id="subCategorySelect"
@@ -151,7 +156,7 @@ function NavBar({ handleZoomToMississippi, handleZoomToConnecticut, handleResetV
                         onChange={(e) => handleSubCategorySelection(e.target.value)}
                     >
                         <option value="" disabled>
-                            -- Select a Subcategory --
+                            — Select a Subcategory —
                         </option>
                         {subCategories.map((subCategory, index) => (
                             <option key={index} value={subCategory}>
@@ -163,18 +168,18 @@ function NavBar({ handleZoomToMississippi, handleZoomToConnecticut, handleResetV
             )}
 
             {/* Select Heatmap */}
-            <div>
-                <label htmlFor="stateSelect" style={labelStyle}>
-                    Select Heatmap:
+            <div style={dropdownWrapperStyle}>
+                <label htmlFor="heatmapSelect" style={labelStyle}>
+                    Select Heatmap
                 </label>
                 <select
-                    id="stateSelect"
+                    id="heatmapSelect"
                     style={dropdownStyle}
                     value={currentHeatmap || ''}
                     onChange={(e) => handleHeatmaps(e.target.value, false)}
                 >
                     <option value="" disabled>
-                        -- Select a Heatmap --
+                        — Select a Heatmap —
                     </option>
                     {heatMaps.map((heatmap, index) => (
                         <option key={index} value={heatmap}>
@@ -199,32 +204,53 @@ function NavBar({ handleZoomToMississippi, handleZoomToConnecticut, handleResetV
 // Styles
 const navBarContainerStyle = {
     width: '100%',
-    backgroundColor: '#024B4B',
+    background: 'linear-gradient(180deg, #012e2e 0%, #011f1f 100%)',
     color: 'white',
     height: '100%',
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    padding: '10px',
+    alignItems: 'stretch',
+    padding: '16px 12px',
+    gap: '14px',
+    borderRight: '1px solid rgba(255,255,255,0.07)',
+    overflowY: 'auto',
+};
+
+const dropdownWrapperStyle = {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '6px',
 };
 
 const dropdownStyle = {
-    padding: '10px',
-    margin: '5px 0',
+    padding: '10px 12px',
     width: '100%',
-    backgroundColor: '#036666',
+    backgroundColor: '#036060',
     color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    fontSize: '14px',
-    fontWeight: 'bold',
+    border: '1px solid rgba(255,255,255,0.15)',
+    borderRadius: '8px',
+    fontSize: '13px',
+    fontWeight: '500',
+    cursor: 'pointer',
+    outline: 'none',
+    appearance: 'none',
+    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'right 10px center',
+    paddingRight: '32px',
+    boxSizing: 'border-box',
+    transition: 'background-color 0.2s, border-color 0.2s',
 };
 
 const labelStyle = {
-    marginBottom: '5px',
-    fontSize: '14px',
-    fontWeight: 'bold',
+    fontSize: '11px',
+    fontWeight: '600',
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
+    color: 'rgba(255,255,255,0.55)',
+    paddingLeft: '2px',
 };
 
 export default NavBar;

@@ -90,10 +90,10 @@ export default function Map({ setZoomToMississippi, setZoomToConnecticut, setRes
                     });
                     const newLayer = L.geoJSON(responseData, {
                         style: (feature) => {
-                            let fillColor = 'grey';
+                            let fillColor = '#2a2a2a';
 
                             if (!heatmapOn) {
-                                fillColor = 'grey';
+                                fillColor = '#2a2a2a';
                             } else if (currentHeatmap === 'Voting/Electoral Heatmap') {
                                 const totalVotes = feature.properties.G20PRERTRU + feature.properties.G20PREDBID;
                                 const republicanVotes = feature.properties.G20PRERTRU;
@@ -172,14 +172,16 @@ export default function Map({ setZoomToMississippi, setZoomToConnecticut, setRes
                             // }
                             if ((districtHighlighted == feature.properties.District || districtHighlighted == feature.properties.DISTRICT) && (districtType === 'cd')) {
                                 return {
-                                    color: fillColor,
-                                    weight: mouseOverWeight,
+                                    color: '#111111',
+                                    fillColor: fillColor,
+                                    weight: 1.5,
                                     fillOpacity: heatmapOn ? heatmapMouseOver : normalMouseOver,
                                 };
                             } else {
                                 return {
-                                    color: fillColor,
-                                    weight: mouseOverWeight,
+                                    color: '#111111',
+                                    fillColor: fillColor,
+                                    weight: 0.5,
                                     fillOpacity: heatmapOn ? heatmapOpacity : normalOpacity,
                                 };
                             }
@@ -187,7 +189,7 @@ export default function Map({ setZoomToMississippi, setZoomToConnecticut, setRes
                         onEachFeature: (feature, layer) => {
                             layer.on({
                                 mouseover: () => {
-                                    const originalColor = layer.options.color;
+                                    const originalFillColor = layer.options.fillColor;
                                     setHoveredName('');
                                     if (districtType === 'cd') {
                                         const displayName = `District ${feature.properties.District || feature.properties.DISTRICT || 'Unknown'}`;
@@ -197,17 +199,19 @@ export default function Map({ setZoomToMississippi, setZoomToConnecticut, setRes
                                         setHoveredName(displayName);
                                     }
                                     layer.setStyle({
-                                        color: originalColor,
+                                        color: '#111111',
+                                        fillColor: originalFillColor,
                                         weight: mouseOverWeight,
                                         fillOpacity: heatmapOn ? heatmapMouseOver : normalMouseOver,
                                     });
                                 },
                                 mouseout: () => {
-                                    const originalColor = layer.options.color;
+                                    const originalFillColor = layer.options.fillColor;
                                     setHoveredName('');
 
                                     layer.setStyle({
-                                        color: originalColor,
+                                        color: '#111111',
+                                        fillColor: originalFillColor,
                                         weight: mouseOutWeight,
                                         fillOpacity: heatmapOn ? heatmapOpacity : normalOpacity,
                                     });
@@ -463,16 +467,16 @@ export default function Map({ setZoomToMississippi, setZoomToConnecticut, setRes
                     <button style={closeButtonStyle} onClick={() => setShowPopup(false)}>
                         &times;
                     </button>
-                    <h3 style={{ marginBottom: '10px' }}>{districtSummary.districtName}</h3>
+                    <h3 style={{ marginBottom: '10px', color: '#80cbc4', fontSize: '15px', fontWeight: '700', letterSpacing: '0.03em' }}>{districtSummary.districtName}</h3>
 
                     <div style={{ marginBottom: '10px' }}>
-                        <strong>Voter Distribution:</strong>
+                        <strong style={{ color: 'rgba(255,255,255,0.9)', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Voter Distribution</strong>
                         <p style={lineStyle}>Republican: {districtSummary.voterDistribution.republican}</p>
                         <p style={lineStyle}>Democratic: {districtSummary.voterDistribution.democratic}</p>
                     </div>
 
                     <div style={{ marginBottom: '10px' }}>
-                        <strong>Racial/Ethnic Distribution:</strong>
+                        <strong style={{ color: 'rgba(255,255,255,0.9)', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Racial/Ethnic Distribution</strong>
                         <p style={lineStyle}>White: {districtSummary.racialSummary.white}</p>
                         <p style={lineStyle}>Black: {districtSummary.racialSummary.black}</p>
                         <p style={lineStyle}>Hispanic: {districtSummary.racialSummary.hispanic}</p>
@@ -481,14 +485,14 @@ export default function Map({ setZoomToMississippi, setZoomToConnecticut, setRes
                     </div>
 
                     <div style={{ marginBottom: '10px' }}>
-                        <strong>Income Distribution:</strong>
+                        <strong style={{ color: 'rgba(255,255,255,0.9)', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Income Distribution</strong>
                         {districtSummary.incomeDistribution.map((income, index) => (
                             <p key={index} style={lineStyle}>
                                 {income.label}: {income.value.toLocaleString()}
                             </p>
                         ))}
-                        <p style={lineStyle}>
-                            <strong>Median Income:</strong> {districtSummary.medianIncome}
+                        <p style={{ ...lineStyle, color: '#80cbc4', fontWeight: '600' }}>
+                            Median Income: {districtSummary.medianIncome}
                         </p>
                     </div>
                 </div>
@@ -805,10 +809,16 @@ const hoveredNameStyle = {
     position: 'absolute',
     top: '25px',
     left: '60px',
-    padding: '10px',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    padding: '8px 14px',
+    backgroundColor: 'rgba(1, 28, 28, 0.92)',
+    border: '1px solid rgba(128, 203, 196, 0.3)',
     borderRadius: '8px',
-    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+    color: 'rgba(255, 255, 255, 0.9)',
+    fontSize: '13px',
+    fontWeight: '600',
+    fontFamily: 'Inter, Arial, sans-serif',
+    letterSpacing: '0.03em',
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
     zIndex: 1000,
 };
 
@@ -822,29 +832,34 @@ const mapIconDivStyle = {
 const lineStyle = {
     margin: '2px 0',
     paddingLeft: '10px',
-    fontSize: '14px',
-    lineHeight: '1.5',
+    fontSize: '13px',
+    lineHeight: '1.6',
+    color: 'rgba(255, 255, 255, 0.75)',
 };
 
 const popupStyle = {
     position: 'absolute',
     top: '50px',
     left: '50px',
-    padding: '15px',
-    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    borderRadius: '8px',
-    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-    maxWidth: '350px',
+    padding: '16px',
+    backgroundColor: 'rgba(1, 28, 28, 0.96)',
+    border: '1px solid rgba(128, 203, 196, 0.25)',
+    borderRadius: '10px',
+    boxShadow: '0px 6px 20px rgba(0, 0, 0, 0.5)',
+    maxWidth: '300px',
     zIndex: 1000,
-    fontFamily: 'Arial, sans-serif',
+    fontFamily: 'Inter, Arial, sans-serif',
+    color: 'rgba(255, 255, 255, 0.85)',
 };
 
 const closeButtonStyle = {
     position: 'absolute',
-    top: '5px',
-    right: '5px',
+    top: '8px',
+    right: '10px',
     background: 'none',
     border: 'none',
     fontSize: '18px',
     cursor: 'pointer',
+    color: 'rgba(255, 255, 255, 0.6)',
+    lineHeight: 1,
 };

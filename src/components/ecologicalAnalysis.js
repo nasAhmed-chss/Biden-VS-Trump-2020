@@ -59,16 +59,24 @@ const EcologicalAnalysis = ({ currentState, selectedSubCategory }) => {
     return (
         <div style={containerStyle}>
             <div style={chartsContainerStyle}>
-                <h1 style={{ textAlign: 'center', margin: '10px 0', marginLeft: '0px', fontFamily: '"Arial", sans-serif' }}>Ecological Inferences</h1>
+                <h1 style={{
+                    textAlign: 'center',
+                    margin: '0 0 16px 0',
+                    fontFamily: 'Inter, Arial, sans-serif',
+                    fontSize: '1.4rem',
+                    fontWeight: '700',
+                    color: '#80cbc4',
+                    letterSpacing: '0.03em',
+                }}>Ecological Inferences</h1>
                 <div style={graphWrapperStyle}>{renderCharts()}</div>
             </div>
             <div style={controllerContainerStyle}>
-                <h3 style={controllerHeaderStyle}>Comparing Graphs</h3>
+                <h3 style={controllerHeaderStyle}>Compare Graphs</h3>
                 <div style={buttonGroupStyle}>
-                    <button style={buttonStyle} onClick={() => setChartType('Bar')}>
+                    <button style={chartType === 'Bar' ? activeButtonStyle : buttonStyle} onClick={() => setChartType('Bar')}>
                         Bar Chart
                     </button>
-                    <button style={buttonStyle} onClick={() => setChartType('Eco')}>
+                    <button style={chartType === 'Eco' ? activeButtonStyle : buttonStyle} onClick={() => setChartType('Eco')}>
                         Eco. Inf.
                     </button>
                 </div>
@@ -142,115 +150,83 @@ const EcologicalAnalysis = ({ currentState, selectedSubCategory }) => {
 
 const containerStyle = {
     display: 'flex',
-    flexDirection: 'row', // Align legend and graphs side-by-side
-    alignItems: 'flex-start', // Align items at the top
-    gap: '20px', // Space between legend and charts
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: '16px',
     width: '100%',
-
 };
 
-
-
 const chartsContainerStyle = {
-    flex: 1, // Take up remaining space
+    flex: 1,
     display: 'flex',
-    flexDirection: 'column', // Arrange graphs vertically
-    justifyContent: 'center', // Center graphs
-    alignItems: 'center', // Center graphs horizontally
-    gap: '10px', // Reduce space between elements
-    width: '90%',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    gap: '10px',
+    minWidth: 0,
     paddingTop: '10px',
 };
 
 const graphWrapperStyle = {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', // Center individual charts horizontally
+    alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-
-
 };
 
 const controllerContainerStyle = {
-    width: '100%', // Allocate a smaller portion for the controller
+    width: '180px',
+    flexShrink: 0,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'flex-start',
-    padding: '10px',
-    borderLeft: '1px solid #ccc', // Faint separating line
-    height: '100%',
-    marginLeft: '3%'
+    padding: '12px',
+    borderLeft: '1px solid rgba(255,255,255,0.08)',
+    gap: '10px',
 };
-
-
-
 
 const controllerHeaderStyle = {
-    fontSize: '1.2rem',
-    fontFamily: '"Arial", sans-serif',
-    marginBottom: '20px',
-    fontFamily: '"Arial", sans-serif'
-};
-
-const controllerSectionStyle = {
-    width: '100%',
-    marginBottom: '20px',
-    padding: '10px',
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    backgroundColor: '#ffffff',
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-    marginTop: '50%'
-};
-
-const sectionHeaderStyle = {
-    fontSize: '1rem',
-    fontFamily: '"Arial", sans-serif',
-    marginBottom: '10px',
+    fontSize: '12px',
+    fontFamily: 'Inter, Arial, sans-serif',
+    fontWeight: '700',
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
+    color: 'rgba(255,255,255,0.45)',
+    margin: '0 0 6px',
     textAlign: 'center',
-};
-
-const dropdownLabelStyle = {
-    fontSize: '0.9rem',
-    fontFamily: '"Arial", sans-serif',
-    marginBottom: '5px',
-    display: 'block',
-};
-
-const dropdownStyle = {
-    width: '100%',
-    padding: '8px',
-    fontSize: '0.9rem',
-    fontFamily: '"Arial", sans-serif',
-    marginBottom: '10px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
 };
 
 const buttonGroupStyle = {
     display: 'flex',
     justifyContent: 'center',
-    gap: '10px',
-    marginBottom: '20px',
+    gap: '6px',
+    marginBottom: '8px',
+};
+
+const btnBase = {
+    padding: '7px 12px',
+    fontSize: '12px',
+    fontFamily: 'Inter, Arial, sans-serif',
+    fontWeight: '600',
+    borderRadius: '7px',
+    cursor: 'pointer',
+    transition: 'all 0.2s',
+    border: '1px solid rgba(255,255,255,0.15)',
 };
 
 const buttonStyle = {
-    padding: '8px 15px',
-    fontSize: '0.9rem',
-    fontFamily: '"Arial", sans-serif',
-    color: '#000', // Black text for contrast
-    backgroundColor: '#fff', // White button color
-    border: '1px solid #ccc', // Subtle border
-    borderRadius: '5px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease, color 0.3s ease',
+    ...btnBase,
+    background: 'rgba(255,255,255,0.06)',
+    color: 'rgba(255,255,255,0.65)',
 };
 
-const buttonHoverStyle = {
-    backgroundColor: '#007bff', // Blue hover color
-    color: '#fff', // White text on hover
+const activeButtonStyle = {
+    ...btnBase,
+    background: 'linear-gradient(135deg, #00796b, #004d40)',
+    color: 'white',
+    border: '1px solid rgba(0,200,170,0.35)',
 };
 
 

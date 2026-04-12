@@ -171,13 +171,13 @@ const GinglesGraph = ({ populationType, locationType, currentState, setPrecinct 
                 if (selectedPrecinct) {
                     svg
                         .append("text")
-                        .attr("x", xScale(selectedPrecinct[popType]) + 10)  // Adjust horizontal offset
+                        .attr("x", xScale(selectedPrecinct[popType]) + 10)
                         .attr("y", selectedVoteType === 'Democratic'
                             ? yScale(selectedPrecinct['Democratic Votes']) - 10
-                            : yScale(selectedPrecinct['Republican Votes']) - 10)  // Use the correct y value
-                        .attr("fill", "black")
+                            : yScale(selectedPrecinct['Republican Votes']) - 10)
+                        .attr("fill", "rgba(255,255,255,0.9)")
                         .attr("font-size", "12px")
-                        .style("font-family", "Arial, sans-serif")
+                        .style("font-family", "Inter, Arial, sans-serif")
                         .text(selectedPrecinct.NAME);
                 }
 
@@ -251,7 +251,11 @@ const GinglesGraph = ({ populationType, locationType, currentState, setPrecinct 
                     .attr("clip-path", "url(#clip)")
                     .attr("d", lineRep);
 
-                svg.append("g")
+                const axisColor = 'rgba(255,255,255,0.6)';
+                const gridColor = 'rgba(255,255,255,0.08)';
+                const labelColor = 'rgba(255,255,255,0.75)';
+
+                const xAxis = svg.append("g")
                     .attr("transform", `translate(0,${height})`)
                     .call(
                         d3.axisBottom(xScale)
@@ -263,16 +267,24 @@ const GinglesGraph = ({ populationType, locationType, currentState, setPrecinct 
                                 return `${d}%`;
                             })
                     );
+                xAxis.selectAll("text").style("fill", axisColor).style("font-size", "11px");
+                xAxis.selectAll("line").style("stroke", axisColor);
+                xAxis.select(".domain").style("stroke", axisColor);
 
-                svg.append("g")
+                const yAxis = svg.append("g")
                     .call(d3.axisLeft(yScale).ticks(10).tickFormat(d => `${d}%`));
+                yAxis.selectAll("text").style("fill", axisColor).style("font-size", "11px");
+                yAxis.selectAll("line").style("stroke", axisColor);
+                yAxis.select(".domain").style("stroke", axisColor);
 
                 svg.append("text")
                     .attr("class", "x label")
                     .attr("text-anchor", "middle")
                     .attr("x", width / 2)
                     .attr("y", height + margin.bottom - 10)
-                    .style("font-family", "Arial, sans-serif")
+                    .style("font-family", "Inter, Arial, sans-serif")
+                    .style("fill", labelColor)
+                    .style("font-size", "12px")
                     .text(() => {
                         if (populationType === 'White') {
                             return "Total White Population %";
@@ -280,15 +292,12 @@ const GinglesGraph = ({ populationType, locationType, currentState, setPrecinct 
                             return "Total African American Population %";
                         } else if (populationType === 'Hispanic/Latino') {
                             return "Total Hispanic/Latino Population %";
-                        }
-                        else if (populationType === 'Asian') {
-                            return "Total Asian Population%";
-                        }
-                        else if (populationType === 'Other Races') {
+                        } else if (populationType === 'Asian') {
+                            return "Total Asian Population %";
+                        } else if (populationType === 'Other Races') {
                             return "Total Other Races %";
-                        }
-                        else if (populationType === 'Income') {
-                            return "Average Household Income"
+                        } else if (populationType === 'Income') {
+                            return "Average Household Income";
                         }
                         return "";
                     });
@@ -299,12 +308,15 @@ const GinglesGraph = ({ populationType, locationType, currentState, setPrecinct 
                     .attr("y", -margin.left + 15)
                     .attr("x", -height / 2)
                     .attr("transform", "rotate(-90)")
-                    .style("font-family", "Arial, sans-serif")
+                    .style("font-family", "Inter, Arial, sans-serif")
+                    .style("fill", labelColor)
+                    .style("font-size", "12px")
                     .text("Vote Share (%)");
+
                 svg.append("g")
                     .attr("class", "grid")
-                    .attr("stroke", "black")
-                    .attr("stroke-width", 0.5)
+                    .attr("stroke", gridColor)
+                    .attr("stroke-width", 1)
                     .selectAll("line")
                     .data(yScale.ticks(10))
                     .enter().append("line")
@@ -315,8 +327,8 @@ const GinglesGraph = ({ populationType, locationType, currentState, setPrecinct 
 
                 svg.append("g")
                     .attr("class", "grid")
-                    .attr("stroke", "black")
-                    .attr("stroke-width", 0.5)
+                    .attr("stroke", gridColor)
+                    .attr("stroke-width", 1)
                     .selectAll("line")
                     .data(xScale.ticks(10))
                     .enter().append("line")
@@ -341,7 +353,12 @@ const GinglesGraph = ({ populationType, locationType, currentState, setPrecinct 
         fetchChartData();
     }, [popType, currentState, locationType, districtType, selectedPrecinct, setPrecinct]);
 
-    return <svg id="scatterplot"></svg>;
+    return (
+        <svg
+            id="scatterplot"
+            style={{ display: 'block', margin: '0 auto', overflow: 'visible' }}
+        ></svg>
+    );
 };
 
 export default GinglesGraph;
